@@ -59,7 +59,7 @@ module.exports = {
     },
   },
   hooks: {
-    'before:init': ['git pull', 'pnpm eslint', 'pnpm build'],
+    'before:init': ['git pull', 'pnpm lint', 'pnpm build'],
     'after:bump': 'echo 更新版本成功',
   },
   git: {

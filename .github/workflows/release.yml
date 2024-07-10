@@ -1,0 +1,72 @@
+name: Release
+on:
+  workflow_dispatch:
+    inputs:
+      type:
+        type: choice
+        description: Choose release type
+        options:
+          - auto
+          - patch
+          - minor
+          - major
+        default: auto
+      beta:
+        type: boolean
+        description: Prerelease
+        default: false
+      nonpm:
+        type: boolean
+        description: No Publish NPM Release
+        default: false
+      noincrement:
+        type: boolean
+        description: Update Github Release
+        default: false
+      dry:
+        type: boolean
+        description: Dry Release
+        default: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.ACTION_TOKEN }}
+
+      - name: Set pnpm Version
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - name: Set up Node 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Set Git Config
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+      - name: Run release
+        run: pnpm release $TYPE_ARG $BETA_ARG $NOINCREMENT_ARG $NONPM_ARG $DRY_ARG
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
+          NOINCREMENT_ARG: ${{ github.event.inputs.noincrement == 'true' && '--no-increment' || ''}}
+          NONPM_ARG: ${{ github.event.inputs.nonpm == 'true' && '--no-npm' || ''}}
+          TYPE_ARG: ${{ fromJSON('{"auto":"", "patch":"patch", "minor":"minor", "major":"major"}')[github.event.inputs.type] }}
+          BETA_ARG: ${{ github.event.inputs.beta == 'true' && '--preRelease=beta' || '' }}
+          DRY_ARG: ${{ github.event.inputs.dry == 'true' && '--dry-run' || '' }}
