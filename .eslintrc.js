@@ -39,5 +39,19 @@ module.exports = {
       plugins: ['@typescript-eslint'],
       rules: {},
     },
+    {
+      env: {
+        'jest/globals': true,
+      },
+      files: ['specs/**'],
+      settings: {
+        jest: {
+          version: require('jest/package.json').version,
+        },
+      },
+      plugins: ['jest'],
+      extends: ['plugin:jest/recommended'],
+      rules: {},
+    },
   ],
 };
