@@ -1,0 +1,1 @@
+import"core-js/modules/es.array.slice.js";import"core-js/modules/es.object.to-string.js";import"core-js/modules/es.regexp.to-string.js";function t(t){return"Number"===Object.prototype.toString.call(t).slice(8,-1)}function e(t){return"String"===Object.prototype.toString.call(t).slice(8,-1)}export{t as isNumber,e as isString};

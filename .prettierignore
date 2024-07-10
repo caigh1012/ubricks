@@ -1,0 +1,11 @@
+# Ignore artifacts:
+dist/**
+types
+coverage
+pnpm-lock.yaml
+*.md
+
+**/.git
+**/.svn
+**/.hg
+**/node_modules
