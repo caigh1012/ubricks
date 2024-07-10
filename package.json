@@ -1,8 +1,19 @@
 {
   "name": "ubricks",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.0",
+  "description": "A javascript utility library",
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./dist/index.es.js",
+        "types": "./types/index.es.d.ts"
+      },
+      "require": {
+        "default": "./dist/index.cjs.js",
+        "types": "./types/index.cjs.d.ts"
+      }
+    }
+  },
   "scripts": {
     "prepare": "husky || true",
     "preinstall": "npx only-allow pnpm",
@@ -19,9 +30,29 @@
     "test": "jest",
     "lint-staged": "npx lint-staged"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "lodash",
+    "lodash-es",
+    "radash"
+  ],
+  "files": [
+    "dist",
+    "types"
+  ],
+  "author": "Kyler Tsai",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "bugs": {
+    "url": "https://github.com/caigh1012/ubricks/issues"
+  },
+  "homepage": "https://caigh1012.github.io/ubricks",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/caigh1012/ubricks.git"
+  },
   "devDependencies": {
     "@babel/core": "^7.24.7",
     "@babel/plugin-transform-runtime": "^7.24.7",
