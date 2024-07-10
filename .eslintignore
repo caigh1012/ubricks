@@ -1,0 +1,5 @@
+# ESlint ignore files
+node_modules
+coverage
+dist/**
+docs/**
