@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext", "DOM"],
+    "lib": ["ESNext"],
     "noImplicitAny": true,
-    "module": "ES2022",
+    "module": "ESNext",
     "baseUrl": ".",
     "paths": {
-      "@lib/*": ["./lib/*"]
+      "@lib/*": ["lib/*"]
     }
   },
-  "include": ["src/*.ts", "lib/*.ts"],
+  "include": ["src/*.ts", "lib/*.ts", "specs/**/*.ts"],
   "exclude": ["node_modules"]
 }

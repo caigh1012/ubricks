@@ -33,26 +33,14 @@ function getBabelConfig(target) {
 }
 
 /**
- * dts plugin
- */
-function getDtsPluginCfg() {
-  return [
-    alias({
-      entries: [{ find: '@lib', replacement: '../lib' }],
-    }),
-    dts(),
-  ];
-}
-
-/**
  * rollup config
  */
 export default [
   // ESM
   {
-    input: 'src/index.es.ts',
+    input: 'src/index.ts',
     output: {
-      file: 'dist/index.es.js',
+      file: 'dist/index.esm.js',
       format: 'es',
     },
     plugins: [
@@ -65,7 +53,7 @@ export default [
   },
   // Commonjs
   {
-    input: 'src/index.cjs.ts',
+    input: 'src/index.ts',
     output: {
       file: 'dist/index.cjs.js',
       format: 'cjs',
@@ -80,20 +68,25 @@ export default [
   },
   // 生成 ESM d.ts 声明文件
   {
-    input: 'src/index.es.ts',
+    input: 'src/index.ts',
     output: {
-      format: 'esm',
-      file: 'types/index.es.d.ts',
+      format: 'es',
+      file: 'typings/index.d.ts',
     },
-    plugins: getDtsPluginCfg(),
+    plugins: [
+      alias({
+        entries: [{ find: '@lib', replacement: '../lib' }],
+      }),
+      dts(),
+    ],
   },
   // 生成 CJS d.ts 声明文件
-  {
-    input: 'src/index.cjs.ts',
-    output: {
-      format: 'cjs',
-      file: 'types/index.cjs.d.ts',
-    },
-    plugins: getDtsPluginCfg(),
-  },
+  // {
+  //   input: 'src/index.cjs.ts',
+  //   output: {
+  //     format: 'cjs',
+  //     file: 'types/index.d.cts',
+  //   },
+  //   plugins: [dts()],
+  // },
 ];

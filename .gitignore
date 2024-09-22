@@ -1,6 +1,5 @@
 # Ignore the IDE's configuration file
 .idea/
-.vscode/
 *.iml
 out
 gen

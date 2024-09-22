@@ -1,6 +1,8 @@
-export default {
+import type { JestConfigWithTsJest } from 'ts-jest';
+
+const jestConfig: JestConfigWithTsJest = {
   preset: 'ts-jest',
-  testEnvironment: 'node',
+  testEnvironment: 'node', // jsdom or node
   collectCoverage: true,
   coverageReporters: ['text', 'cobertura'],
   transform: {
@@ -13,6 +15,8 @@ export default {
     ],
   },
   moduleNameMapper: {
-    '^@lib/(.+)$': '<rootDir>/lib/$1',
+    '^@lib/(.*)$': '<rootDir>/lib/$1',
   },
 };
+
+export default jestConfig;

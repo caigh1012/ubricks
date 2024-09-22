@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "EditorConfig.EditorConfig",
+    "esbenp.prettier-vscode",
+    "dracula-theme.theme-dracula",
+    "atommaterial.a-file-icon-vscode"
+  ]
+}

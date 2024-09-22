@@ -2,6 +2,6 @@
   "extends": ["./tsconfig.json"],
   "compilerOptions": {
     "removeComments": true,
-    "target": "ES2022"
+    "target": "ESNext"
   }
 }

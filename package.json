@@ -2,18 +2,9 @@
   "name": "ubricks",
   "version": "0.0.0",
   "description": "A javascript utility library",
-  "exports": {
-    ".": {
-      "import": {
-        "default": "./dist/index.es.js",
-        "types": "./types/index.es.d.ts"
-      },
-      "require": {
-        "default": "./dist/index.cjs.js",
-        "types": "./types/index.cjs.d.ts"
-      }
-    }
-  },
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "typings/index.d.ts",
   "scripts": {
     "prepare": "husky || true",
     "preinstall": "npx only-allow pnpm",
@@ -26,18 +17,19 @@
     "lint": "eslint **/*.{ts,js}",
     "lint:fix": "eslint **/*.{ts,js} --fix",
     "format": "prettier **/*.{ts,js,json,yaml,yml} --write .",
-    "clean": "rimraf dist/ types/",
+    "clean": "rimraf dist/ typings/",
     "test": "jest",
     "lint-staged": "npx lint-staged"
   },
   "keywords": [
     "lodash",
     "lodash-es",
-    "radash"
+    "radash",
+    "ubricks"
   ],
   "files": [
     "dist",
-    "types"
+    "typings"
   ],
   "author": "Kyler Tsai",
   "license": "MIT",
@@ -59,26 +51,28 @@
     "@babel/preset-env": "^7.24.7",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
+    "@eslint/js": "^9.10.0",
     "@jest/globals": "^29.7.0",
     "@release-it/conventional-changelog": "^8.0.1",
     "@rollup/plugin-alias": "^5.1.0",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
-    "@types/jest": "^29.5.12",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
+    "@types/jest": "^29.5.13",
+    "@typescript-eslint/eslint-plugin": "^8.3.0",
+    "@typescript-eslint/parser": "^8.3.0",
     "cross-env": "^7.0.3",
-    "eslint": "^8.45.0",
+    "eslint": "^8.57.0",
     "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jest": "^27.2.3",
-    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-import": "^2.30.0",
+    "eslint-plugin-jest": "^27.9.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.9.0",
     "husky": "^9.0.11",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "lint-staged": "^15.2.7",
-    "prettier": "^3.3.2",
+    "prettier": "^3.3.3",
     "release-it": "^17.5.0",
     "rimraf": "^6.0.0",
     "rollup": "^4.18.1",
@@ -87,6 +81,7 @@
     "ts-node": "^10.9.2",
     "tslib": "^2.6.3",
     "typescript": "5.1.6",
+    "typescript-eslint": "^8.6.0",
     "vitepress": "^1.3.0"
   },
   "dependencies": {

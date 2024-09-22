@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress';
 
-const serverBasePath = process.env.NODE_ENV === 'production' ? '/abrick/' : '/';
-const serverPublicPath = process.env.NODE_ENV === 'production' ? '/abrick/' : '/';
+const serverBasePath = process.env.NODE_ENV === 'production' ? '/ubricks/' : '/';
+const serverPublicPath = process.env.NODE_ENV === 'production' ? '/ubricks/' : '/';
 
 export default defineConfig({
   title: 'ubricks',
@@ -9,8 +9,8 @@ export default defineConfig({
   base: serverBasePath,
   themeConfig: {
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' },
+      { text: '主页', link: '/' },
+      { text: '示例', link: '/markdown-examples' },
     ],
 
     sidebar: [
@@ -23,6 +23,6 @@ export default defineConfig({
       },
     ],
 
-    socialLinks: [{ icon: 'github', link: 'https://github.com/caigh1012/abrick' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/caigh1012/ubricks' }],
   },
 });
