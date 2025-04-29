@@ -2,7 +2,7 @@
   "name": "ubricks",
   "version": "0.0.0",
   "description": "A javascript utility library",
-  "main": "dist/index.cjs.js",
+  "main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
   "types": "typings/index.d.ts",
   "scripts": {

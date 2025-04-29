@@ -4,12 +4,11 @@ import terser from '@rollup/plugin-terser';
 import alias from '@rollup/plugin-alias';
 import dts from 'rollup-plugin-dts';
 
-const nodeTarget = {
-  node: 14,
-};
-
 const browserTarget = {
-  chrome: '45',
+  chrome: '79',
+  firefox: '70',
+  safari: '12',
+  edge: '88',
 };
 
 /**
@@ -51,21 +50,6 @@ export default [
       terser(),
     ],
   },
-  // Commonjs
-  {
-    input: 'src/index.ts',
-    output: {
-      file: 'dist/index.cjs.js',
-      format: 'cjs',
-    },
-    plugins: [
-      typescript({
-        tsconfig: './tsconfig.build.json',
-      }),
-      getBabelConfig(nodeTarget),
-      terser(),
-    ],
-  },
   // 生成 ESM d.ts 声明文件
   {
     input: 'src/index.ts',
@@ -80,13 +64,4 @@ export default [
       dts(),
     ],
   },
-  // 生成 CJS d.ts 声明文件
-  // {
-  //   input: 'src/index.cjs.ts',
-  //   output: {
-  //     format: 'cjs',
-  //     file: 'types/index.d.cts',
-  //   },
-  //   plugins: [dts()],
-  // },
 ];
